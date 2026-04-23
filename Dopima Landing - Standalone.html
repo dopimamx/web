@@ -1,0 +1,1128 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dopima — El sistema que hace que ganar se vuelva hábito</title>
+<template id="__bundler_thumbnail" data-bg-color="#FAF7F5">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#FAF7F5"/>
+    <text x="600" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="220" fill="#C94F78" letter-spacing="-8">dopima</text>
+    <circle cx="600" cy="560" r="10" fill="#C94F78"/>
+  </svg>
+</template>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink: #C94F78;
+    --pink-600: #B33E66;
+    --pink-100: #F7E4EC;
+    --pink-50:  #FCF2F6;
+    --plum: #1A0D12;
+    --plum-2: #2A1620;
+    --ink: #140B10;
+    --ink-2: #3E2A33;
+    --ink-3: #6E5C64;
+    --peach: #F5D9C9;
+    --cream: #FAF7F5;
+    --paper: #FFFFFF;
+    --line: #EADFE4;
+    --line-2: #F0E6EA;
+    --ok: #1F8F5C;
+    --radius: 18px;
+    --radius-sm: 10px;
+    --shadow-sm: 0 1px 2px rgba(20,11,16,.04), 0 2px 6px rgba(20,11,16,.04);
+    --shadow-md: 0 8px 24px rgba(20,11,16,.06), 0 2px 6px rgba(20,11,16,.04);
+    --shadow-pink: 0 10px 30px rgba(201,79,120,.25);
+    --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--cream);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  img{max-width:100%;display:block}
+
+  .container{max-width:1240px;margin:0 auto;padding:0 28px}
+  @media(max-width:640px){.container{padding:0 20px}}
+
+  /* ---------- Typography ---------- */
+  h1,h2,h3,h4{font-family:var(--font-display);letter-spacing:-0.02em;margin:0;color:var(--ink)}
+  h1{font-weight:600;font-size:clamp(40px, 6.2vw, 78px);line-height:1.02;letter-spacing:-0.035em}
+  h2{font-weight:600;font-size:clamp(32px, 4.4vw, 54px);line-height:1.05;letter-spacing:-0.028em}
+  h3{font-weight:600;font-size:22px;line-height:1.2}
+  .eyebrow{
+    font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--pink);font-weight:500;display:inline-flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:24px;height:1px;background:var(--pink)}
+
+  /* ---------- Logo ---------- */
+  .logo-wordmark{
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--pink);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    font-variation-settings: "opsz" 14;
+  }
+  .logo-wordmark.on-dark{color:#F3B8C8}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    backdrop-filter: saturate(1.2) blur(14px);
+    -webkit-backdrop-filter: saturate(1.2) blur(14px);
+    background: rgba(250,247,245,.78);
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s ease, background .2s ease;
+  }
+  .nav.scrolled{border-bottom-color: var(--line); background: rgba(250,247,245,.92)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{font-size:14.5px;font-weight:500;color:var(--ink-2);transition:color .15s}
+  .nav-links a:hover{color:var(--pink)}
+  @media(max-width:880px){.nav-links{display:none}}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-weight:600;font-size:15px;letter-spacing:-0.005em;
+    padding:13px 20px;border-radius:999px;
+    transition: transform .15s ease, box-shadow .2s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background: var(--pink); color:white;
+    box-shadow: var(--shadow-pink);
+  }
+  .btn-primary:hover{background:var(--pink-600);transform:translateY(-1px);box-shadow:0 14px 36px rgba(201,79,120,.32)}
+  .btn-primary:active{transform:translateY(0)}
+  .btn-ghost{background:transparent;color:var(--ink);padding:13px 18px}
+  .btn-ghost:hover{background:var(--pink-50)}
+  .btn-outline{background:transparent;color:var(--ink);border:1px solid var(--line);padding:12px 19px}
+  .btn-outline:hover{border-color:var(--ink);background:white}
+  .btn-lg{padding:18px 28px;font-size:17px}
+  .btn-xl{padding:22px 34px;font-size:19px;border-radius:999px}
+
+  .wa-icon{width:18px;height:18px;flex-shrink:0}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;padding: 148px 0 80px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(60% 45% at 85% 20%, rgba(201,79,120,.13), transparent 70%),
+      radial-gradient(40% 35% at 10% 80%, rgba(245,217,201,.5), transparent 70%);
+    z-index:0;
+  }
+  .hero-grid{
+    position:relative;z-index:1;
+    display:grid;grid-template-columns: 1.05fr 1fr;gap:64px;align-items:center;
+  }
+  @media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:48px}.hero{padding-top:120px}}
+
+  .hero h1 .mark{
+    color: var(--pink);
+    position:relative;
+    white-space:nowrap;
+  }
+  .hero h1 .mark::after{
+    content:"";position:absolute;left:0;right:0;bottom:-4px;height:10px;
+    background:var(--pink-100);border-radius:999px;z-index:-1;
+  }
+  .hero-sub{
+    margin-top:24px;font-size:20px;line-height:1.5;color:var(--ink-2);max-width:560px;
+  }
+  .hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-trust{
+    margin-top:28px;display:flex;align-items:center;gap:14px;color:var(--ink-3);font-size:14px;
+  }
+  .dots{display:flex}
+  .dots .dot{
+    width:28px;height:28px;border-radius:50%;border:2px solid var(--cream);
+    background:linear-gradient(135deg,var(--pink) 0%,var(--pink-600) 100%);
+    margin-left:-8px;
+  }
+  .dots .dot:first-child{margin-left:0}
+  .dots .dot:nth-child(2){background:linear-gradient(135deg,#F5A8BE,#D66E8C)}
+  .dots .dot:nth-child(3){background:linear-gradient(135deg,#F5D9C9,#E2A989)}
+  .dots .dot:nth-child(4){background:linear-gradient(135deg,#2A1620,#4A2B36)}
+
+  /* ---------- Abstract pipeline visual ---------- */
+  .pipeline{
+    position:relative;aspect-ratio: 5/4.3;
+    background: var(--paper);
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    box-shadow: 0 30px 60px rgba(20,11,16,.08), 0 8px 20px rgba(201,79,120,.07);
+    padding: 22px;
+    overflow:hidden;
+  }
+  .pipe-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+  .pipe-head .tag{
+    font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);
+  }
+  .pipe-dots{display:flex;gap:6px}
+  .pipe-dots i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+  .pipe-dots i:nth-child(1){background:#F5A8BE}
+  .pipe-dots i:nth-child(2){background:var(--peach)}
+  .pipe-dots i:nth-child(3){background:var(--pink)}
+
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+  .kpi{
+    background:var(--cream);border:1px solid var(--line-2);border-radius:12px;padding:10px 12px;
+  }
+  .kpi .l{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-3)}
+  .kpi .v{font-family:var(--font-display);font-weight:600;font-size:22px;color:var(--ink);margin-top:2px}
+  .kpi .v .up{color:var(--ok);font-size:12px;margin-left:4px;font-family:var(--font-body);font-weight:600}
+
+  .pipe-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .col{
+    background: var(--pink-50);
+    border-radius:12px;padding:10px;min-height:220px;
+    display:flex;flex-direction:column;gap:8px;
+    border:1px solid rgba(201,79,120,.08);
+  }
+  .col .col-head{
+    display:flex;align-items:center;justify-content:space-between;
+    font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--pink);padding:2px 2px 8px;border-bottom:1px dashed rgba(201,79,120,.2);
+  }
+  .col .col-head b{font-family:var(--font-body);font-weight:700;color:var(--pink-600);font-size:11px;background:white;border-radius:99px;padding:2px 7px;letter-spacing:0;text-transform:none}
+  .card{
+    background:white;border-radius:8px;padding:8px 9px;
+    box-shadow:0 1px 2px rgba(20,11,16,.04);
+    border:1px solid var(--line-2);
+    display:flex;flex-direction:column;gap:5px;
+  }
+  .card .name{font-weight:600;font-size:11px;color:var(--ink);line-height:1.2}
+  .card .meta{font-size:9.5px;color:var(--ink-3);display:flex;align-items:center;gap:4px;font-family:var(--font-mono)}
+  .card .bar{height:3px;border-radius:99px;background:var(--line);overflow:hidden}
+  .card .bar i{display:block;height:100%;background:var(--pink)}
+  .card.hot{border-color:rgba(201,79,120,.3)}
+  .card.hot .name::after{content:"";display:inline-block;width:6px;height:6px;background:var(--pink);border-radius:99px;margin-left:5px;vertical-align:1px;box-shadow:0 0 0 3px rgba(201,79,120,.15)}
+
+  .floating-ping{
+    position:absolute;right:-22px;bottom:46px;
+    background:white;border:1px solid var(--line);border-radius:16px;padding:12px 14px;
+    box-shadow: var(--shadow-md);
+    display:flex;align-items:center;gap:10px;
+    animation: float 4.5s ease-in-out infinite;
+  }
+  .floating-ping .ico{
+    width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--pink),var(--pink-600));
+    display:grid;place-items:center;color:white;
+  }
+  .floating-ping .t{font-size:12.5px;font-weight:600;color:var(--ink);line-height:1.2}
+  .floating-ping .s{font-size:11px;color:var(--ink-3);font-family:var(--font-mono)}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+  .floating-chip{
+    position:absolute;left:-18px;top:90px;
+    background:var(--plum);color:white;border-radius:14px;padding:10px 14px;
+    display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-md);
+    font-size:12.5px;font-weight:500;
+    animation: float 5s ease-in-out infinite .6s;
+  }
+  .floating-chip .pulse{width:8px;height:8px;border-radius:99px;background:#7BE0A6;box-shadow:0 0 0 0 rgba(123,224,166,.7);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(123,224,166,.6)}70%{box-shadow:0 0 0 8px rgba(123,224,166,0)}100%{box-shadow:0 0 0 0 rgba(123,224,166,0)}}
+
+  /* ---------- Proof bar ---------- */
+  .proof{padding:48px 0 28px;border-top:1px solid var(--line-2)}
+  .proof-label{
+    text-align:center;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);
+    margin-bottom:28px;
+  }
+  .proof-row{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:40px;align-items:center;
+  }
+  @media(max-width:880px){.proof-row{grid-template-columns:repeat(3,1fr);gap:28px}}
+  .proof-logo{
+    font-family:var(--font-display);font-weight:600;font-size:20px;letter-spacing:-.02em;
+    color: #A99AA2;
+    text-align:center;opacity:.85;
+    transition:opacity .2s, color .2s;
+  }
+  .proof-logo:hover{color:var(--ink);opacity:1}
+  .proof-logo span{opacity:.55;font-weight:500}
+  .proof-logo .mk{display:inline-block;width:9px;height:9px;border-radius:3px;background:currentColor;margin-right:6px;vertical-align:1px}
+
+  /* ---------- Sections ---------- */
+  section{padding: 100px 0}
+  @media(max-width:640px){section{padding:72px 0}}
+
+  .section-head{max-width:780px;margin-bottom:56px}
+  .section-head h2{margin-top:14px}
+  .section-head p{margin-top:18px;font-size:19px;color:var(--ink-2);line-height:1.5}
+
+  /* ---------- Problem (dark) ---------- */
+  .problem{background: var(--plum);color:#EEDDE4;position:relative;overflow:hidden}
+  .problem::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(45% 50% at 90% 10%, rgba(201,79,120,.18), transparent 60%),
+      radial-gradient(40% 45% at 5% 90%, rgba(201,79,120,.09), transparent 60%);
+  }
+  .problem > .container{position:relative;z-index:1}
+  .problem h2,.problem .section-head h2{color:#FFF}
+  .problem .section-head p{color:#C9B3BC}
+  .problem .eyebrow{color:#F5A8BE}
+  .problem .eyebrow::before{background:#F5A8BE}
+  .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:880px){.pain-grid{grid-template-columns:1fr}}
+  .pain{
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 20px;padding: 28px;
+    transition: border-color .2s, transform .2s, background .2s;
+  }
+  .pain:hover{border-color:rgba(245,168,190,.35);transform:translateY(-3px);background:rgba(255,255,255,.05)}
+  .pain .num{
+    font-family:var(--font-mono);font-size:12px;color:#F5A8BE;letter-spacing:.14em;
+  }
+  .pain .ico{
+    width:56px;height:56px;border-radius:14px;margin:14px 0 20px;
+    background:linear-gradient(135deg,rgba(201,79,120,.25),rgba(201,79,120,.06));
+    border:1px solid rgba(245,168,190,.25);
+    display:grid;place-items:center;color:#F5A8BE;
+  }
+  .pain h3{color:#FFF;font-size:22px;line-height:1.2}
+  .pain p{color:#C9B3BC;margin-top:10px;font-size:15.5px;line-height:1.55}
+
+  /* ---------- How it works (steps) ---------- */
+  .how{background:var(--paper)}
+  .steps{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;
+  }
+  @media(max-width:880px){.steps{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.steps{grid-template-columns:1fr}}
+  .step{
+    background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:28px;
+    position:relative;transition:all .25s ease;
+    min-height: 280px;display:flex;flex-direction:column;
+  }
+  .step:hover{transform:translateY(-4px);border-color:var(--pink);box-shadow:var(--shadow-md)}
+  .step .num{
+    font-family:var(--font-display);font-weight:600;font-size:15px;
+    color:var(--pink);
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .step .num::before{
+    content:"";width:28px;height:28px;border-radius:50%;background:var(--pink);color:white;
+    display:grid;place-items:center;font-size:13px;font-weight:700;
+  }
+  .step:nth-child(1) .num::before{content:"1"}
+  .step:nth-child(2) .num::before{content:"2"}
+  .step:nth-child(3) .num::before{content:"3"}
+  .step:nth-child(4) .num::before{content:"4"}
+  .step h3{margin-top:22px;font-size:26px}
+  .step p{margin-top:12px;color:var(--ink-2);font-size:15.5px}
+  .step .viz{margin-top:auto;padding-top:24px;display:flex;align-items:flex-end;gap:6px;height:64px}
+  .step .viz i{display:block;flex:1;background:var(--pink-100);border-radius:5px;transition:background .2s}
+  .step:hover .viz i{background:var(--pink)}
+
+  /* flow line under steps (connecting) */
+  .flow-line{
+    margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+    font-family:var(--font-mono);font-size:11px;color:var(--ink-3);letter-spacing:.12em;text-transform:uppercase;
+    text-align:center;
+  }
+  @media(max-width:880px){.flow-line{display:none}}
+  .flow-line .arrow{display:flex;align-items:center;justify-content:center;gap:12px}
+  .flow-line .arrow::before,.flow-line .arrow::after{content:"";height:1px;background:var(--line);flex:1}
+
+  /* ---------- What's included (grid) ---------- */
+  .inc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:880px){.inc-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.inc-grid{grid-template-columns:1fr}}
+  .inc{
+    background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px;
+    transition:all .25s;position:relative;overflow:hidden;
+  }
+  .inc::after{
+    content:"";position:absolute;inset:auto 0 0 0;height:3px;
+    background:linear-gradient(90deg,var(--pink),transparent);
+    transform:translateX(-100%);transition:transform .4s ease;
+  }
+  .inc:hover{border-color:var(--pink);transform:translateY(-3px);box-shadow:var(--shadow-md)}
+  .inc:hover::after{transform:translateX(0)}
+  .inc .ico{
+    width:48px;height:48px;border-radius:12px;background:var(--pink-50);
+    display:grid;place-items:center;color:var(--pink);margin-bottom:18px;
+  }
+  .inc h3{font-size:20px}
+  .inc p{color:var(--ink-2);margin-top:8px;font-size:15px}
+  .inc .tag{
+    font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);display:block;margin-bottom:6px;
+  }
+
+  /* ---------- For whom (sectors) ---------- */
+  .sectors{background:var(--paper)}
+  .sector-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:880px){.sector-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.sector-grid{grid-template-columns:1fr}}
+  .sector{
+    display:flex;align-items:center;gap:18px;
+    background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:20px 22px;
+    transition: all .2s;
+  }
+  .sector:hover{border-color:var(--pink);background:var(--pink-50)}
+  .sector .ico{
+    width:48px;height:48px;border-radius:12px;background:var(--paper);
+    display:grid;place-items:center;color:var(--pink);flex-shrink:0;
+    border:1px solid var(--line);
+  }
+  .sector .t{font-family:var(--font-display);font-weight:600;font-size:19px;color:var(--ink);line-height:1.15;letter-spacing:-.015em}
+  .sector .s{font-size:13.5px;color:var(--ink-3);margin-top:2px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em}
+
+  /* ---------- About ---------- */
+  .about{position:relative;overflow:hidden}
+  .about::before{
+    content:"";position:absolute;inset:0;
+    background: radial-gradient(60% 50% at 80% 50%, rgba(201,79,120,.08), transparent 60%);
+    pointer-events:none;
+  }
+  .about .container{position:relative}
+  .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:center}
+  @media(max-width:880px){.about-grid{grid-template-columns:1fr;gap:48px}}
+  .about h2{font-size:clamp(34px,4.2vw,52px)}
+  .about .lede{font-size:22px;color:var(--ink);line-height:1.4;font-weight:500;margin-top:24px;max-width:540px;letter-spacing:-.01em}
+  .about .body{margin-top:20px;font-size:16.5px;color:var(--ink-2);max-width:540px}
+  .pitch{
+    background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:32px;
+    box-shadow: var(--shadow-md);position:relative;
+  }
+  .pitch .corner{
+    position:absolute;top:-1px;left:32px;background:var(--pink);color:white;
+    font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    padding:5px 12px;border-radius:0 0 8px 8px;font-weight:500;
+  }
+  .pitch .stopwatch{
+    display:flex;align-items:center;gap:8px;
+    font-family:var(--font-mono);font-size:12px;color:var(--ink-3);letter-spacing:.12em;text-transform:uppercase;
+    margin-bottom:16px;margin-top:14px;
+  }
+  .pitch p{font-family:var(--font-display);font-size:20px;font-weight:500;color:var(--ink);line-height:1.4;letter-spacing:-.015em}
+  .pitch p + p{margin-top:14px}
+  .pitch .sig{
+    margin-top:22px;padding-top:20px;border-top:1px solid var(--line);
+    display:flex;align-items:center;gap:12px;
+    font-family:var(--font-body);font-size:13.5px;color:var(--ink-3);
+  }
+  .pitch .sig .dp{width:32px;height:32px;border-radius:99px;background:linear-gradient(135deg,var(--pink),var(--pink-600))}
+
+  .about-stats{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+    margin-top:40px;max-width:540px;
+  }
+  .about-stats .s .n{font-family:var(--font-display);font-weight:600;font-size:38px;color:var(--pink);line-height:1;letter-spacing:-.025em}
+  .about-stats .s .l{font-size:13px;color:var(--ink-3);margin-top:6px;line-height:1.3}
+
+  /* ---------- Final CTA (dark) ---------- */
+  .final-cta{
+    background: var(--plum);color:#FFF;
+    padding: 120px 0;position:relative;overflow:hidden;
+  }
+  .final-cta::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(40% 60% at 50% 120%, rgba(201,79,120,.35), transparent 60%),
+      radial-gradient(30% 40% at 85% 10%, rgba(245,168,190,.1), transparent 60%);
+  }
+  .final-cta > .container{position:relative;z-index:1;text-align:center}
+  .final-cta .eyebrow{color:#F5A8BE}
+  .final-cta .eyebrow::before{background:#F5A8BE}
+  .final-cta h2{color:#FFF;font-size:clamp(44px,6vw,80px);margin-top:18px;max-width:960px;margin-left:auto;margin-right:auto}
+  .final-cta h2 em{font-style:normal;color:#F5A8BE;font-weight:500}
+  .final-cta .sub{color:#D6BCC6;font-size:20px;margin-top:24px;max-width:620px;margin-left:auto;margin-right:auto}
+  .final-cta .cta-row{margin-top:48px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .final-cta .btn-outline{border-color:rgba(255,255,255,.22);color:#FFF}
+  .final-cta .btn-outline:hover{border-color:#FFF;background:rgba(255,255,255,.06)}
+  .final-cta .mini{margin-top:30px;color:#8E747D;font-size:13.5px;font-family:var(--font-mono);letter-spacing:.12em;text-transform:uppercase}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--plum-2);color:#C9B3BC;padding: 64px 0 28px}
+  .foot-grid{display:grid;grid-template-columns: 1.4fr 1fr 1fr 1fr;gap:48px}
+  @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:32px}}
+  @media(max-width:520px){.foot-grid{grid-template-columns:1fr}}
+  footer h4{font-family:var(--font-body);font-size:12px;color:#8E747D;letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin-bottom:16px}
+  footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+  footer ul a{color:#D6BCC6;font-size:14.5px;transition:color .15s}
+  footer ul a:hover{color:#FFF}
+  .foot-tagline{color:#8E747D;font-size:14px;margin-top:16px;max-width:280px;line-height:1.5}
+  .foot-bottom{
+    margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+    font-family:var(--font-mono);font-size:12px;color:#8E747D;letter-spacing:.08em;
+  }
+  .legal-links{display:flex;gap:22px;flex-wrap:wrap}
+  .legal-links a{color:#8E747D;transition:color .15s}
+  .legal-links a:hover{color:#EEDDE4}
+
+  /* ---------- Floating WhatsApp ---------- */
+  .fab-wa{
+    position:fixed;right:24px;bottom:24px;z-index:90;
+    width:60px;height:60px;border-radius:50%;
+    background:var(--pink);color:white;
+    display:grid;place-items:center;
+    box-shadow: 0 14px 30px rgba(201,79,120,.4);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .fab-wa:hover{transform:translateY(-2px) scale(1.05);box-shadow:0 18px 38px rgba(201,79,120,.5)}
+  .fab-wa::after{
+    content:"";position:absolute;inset:-6px;border-radius:50%;
+    border:2px solid rgba(201,79,120,.4);animation:ring 2s infinite;
+  }
+  @keyframes ring{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.35);opacity:0}}
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}
+  .reveal.d2{transition-delay:.16s}
+  .reveal.d3{transition-delay:.24s}
+  .reveal.d4{transition-delay:.32s}
+
+  /* ---------- Tweaks Panel ---------- */
+  .tweaks{
+    position:fixed;right:24px;top:88px;z-index:200;
+    width:300px;background:var(--paper);
+    border:1px solid var(--line);border-radius:18px;
+    box-shadow: 0 30px 60px rgba(20,11,16,.18);
+    padding:18px;display:none;
+    font-family:var(--font-body);
+  }
+  .tweaks.open{display:block}
+  .tweaks h5{margin:0 0 2px;font-family:var(--font-display);font-size:16px;font-weight:600}
+  .tweaks .tw-sub{font-size:12.5px;color:var(--ink-3);margin-bottom:16px}
+  .tw-row{margin-bottom:14px}
+  .tw-row label{display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px;font-family:var(--font-mono)}
+  .tw-swatches{display:flex;gap:8px;flex-wrap:wrap}
+  .tw-swatch{width:28px;height:28px;border-radius:50%;border:2px solid white;box-shadow:0 0 0 1px var(--line);cursor:pointer;transition:transform .1s}
+  .tw-swatch:hover{transform:scale(1.1)}
+  .tw-swatch.active{box-shadow:0 0 0 2px var(--ink)}
+  .tw-opts{display:flex;gap:6px;flex-wrap:wrap}
+  .tw-opt{padding:6px 10px;border:1px solid var(--line);border-radius:99px;font-size:12.5px;cursor:pointer;background:white}
+  .tw-opt.active{background:var(--ink);color:white;border-color:var(--ink)}
+  .tw-close{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;background:var(--cream);display:grid;place-items:center;font-size:18px;color:var(--ink-3)}
+
+  /* ---------- Hero variant: inline form ---------- */
+  body[data-hero="form"] .hero-inline-form{display:block}
+  body:not([data-hero="form"]) .hero-inline-form{display:none}
+  .hero-inline-form{
+    margin-top:28px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:10px;
+    display:flex;gap:8px;max-width:540px;box-shadow:var(--shadow-md);
+  }
+  .hero-inline-form input{
+    flex:1;border:none;outline:none;padding:14px 16px;font-family:inherit;font-size:15.5px;background:transparent;color:var(--ink);
+  }
+  .hero-inline-form .btn{padding:14px 20px}
+
+  /* Density variant */
+  body[data-density="compact"] section{padding:72px 0}
+  body[data-density="compact"] .section-head{margin-bottom:40px}
+
+  /* Accent hue shift for problem->light */
+  body[data-problem-theme="light"] .problem{background:var(--cream);color:var(--ink)}
+  body[data-problem-theme="light"] .problem::before{opacity:.5}
+  body[data-problem-theme="light"] .problem h2,body[data-problem-theme="light"] .problem .section-head h2{color:var(--ink)}
+  body[data-problem-theme="light"] .problem .section-head p{color:var(--ink-2)}
+  body[data-problem-theme="light"] .pain{background:var(--paper);border-color:var(--line)}
+  body[data-problem-theme="light"] .pain:hover{border-color:var(--pink)}
+  body[data-problem-theme="light"] .pain h3{color:var(--ink)}
+  body[data-problem-theme="light"] .pain p{color:var(--ink-2)}
+  body[data-problem-theme="light"] .pain .num{color:var(--pink)}
+  body[data-problem-theme="light"] .pain .ico{background:var(--pink-50);border-color:var(--line);color:var(--pink)}
+  body[data-problem-theme="light"] .problem .eyebrow{color:var(--pink)}
+  body[data-problem-theme="light"] .problem .eyebrow::before{background:var(--pink)}
+
+  /* mobile polish */
+  @media(max-width:640px){
+    .hero-cta .btn{width:100%;justify-content:center}
+    .floating-ping,.floating-chip{display:none}
+  }
+
+</style>
+</head>
+<body data-hero="cta" data-density="normal" data-problem-theme="dark">
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo-wordmark" aria-label="dopima">dopima</a>
+    <div class="nav-links">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#incluye">Qué incluye</a>
+      <a href="#sectores">Para quién</a>
+      <a href="#nosotros">Nosotros</a>
+    </div>
+    <a href="https://wa.link/sw90lb" target="_blank" rel="noopener" class="btn btn-primary" data-wa>
+      <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.42 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/></svg>
+      Quiero mi sistema
+    </a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow reveal">Sistema comercial para LATAM</div>
+      <h1 class="reveal d1" style="margin-top:20px">
+        El sistema<br>
+        que hace que<br>
+        <span class="mark">ganar</span> se<br>
+        vuelva hábito.
+      </h1>
+      <p class="hero-sub reveal d2">
+        No vendemos software. No vendemos consultoría. Montamos tu máquina de ventas — captación,
+        seguimiento automatizado, agendamiento y cierre — funcionando desde el primer día.
+      </p>
+      <div class="hero-cta reveal d3">
+        <a href="https://wa.link/sw90lb" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-wa>
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.42 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/></svg>
+          Quiero mi sistema comercial
+        </a>
+        <a href="#como-funciona" class="btn btn-outline btn-lg">Ver cómo funciona →</a>
+      </div>
+
+      <form class="hero-inline-form reveal d3" onsubmit="event.preventDefault();window.open('https://wa.link/sw90lb','_blank','noopener')">
+        <input type="tel" placeholder="Tu WhatsApp — ej. +57 300 123 4567" />
+        <button type="submit" class="btn btn-primary">Empezar →</button>
+      </form>
+
+      <div class="hero-trust reveal d4">
+        <div class="dots">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+        <span>Equipos en <b style="color:var(--ink);font-weight:700">solar, financiero y construcción</b> ya venden con sistema.</span>
+      </div>
+    </div>
+
+    <!-- Pipeline abstract visual -->
+    <div class="reveal d2" style="position:relative">
+      <div class="pipeline" aria-hidden="true">
+        <div class="pipe-head">
+          <span class="tag">Pipeline · hoy</span>
+          <span class="pipe-dots"><i></i><i></i><i></i></span>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><div class="l">Leads hoy</div><div class="v">142<span class="up">↑ 24%</span></div></div>
+          <div class="kpi"><div class="l">Citas</div><div class="v">38<span class="up">↑ 11%</span></div></div>
+          <div class="kpi"><div class="l">Cierres</div><div class="v">9<span class="up">↑ 18%</span></div></div>
+        </div>
+        <div class="pipe-cols">
+          <div class="col">
+            <div class="col-head">Captar <b>42</b></div>
+            <div class="card"><div class="name">Lead · formulario</div><div class="meta">hace 2m</div><div class="bar"><i style="width:22%"></i></div></div>
+            <div class="card"><div class="name">Lead · anuncio</div><div class="meta">hace 6m</div><div class="bar"><i style="width:35%"></i></div></div>
+            <div class="card"><div class="name">Lead · referido</div><div class="meta">hace 14m</div><div class="bar"><i style="width:18%"></i></div></div>
+          </div>
+          <div class="col">
+            <div class="col-head">Calificar <b>28</b></div>
+            <div class="card hot"><div class="name">Prospecto caliente</div><div class="meta">calificando · IA</div><div class="bar"><i style="width:62%"></i></div></div>
+            <div class="card"><div class="name">Prospecto tibio</div><div class="meta">en seguimiento</div><div class="bar"><i style="width:48%"></i></div></div>
+          </div>
+          <div class="col">
+            <div class="col-head">Agendar <b>11</b></div>
+            <div class="card hot"><div class="name">Cita jueves 10:00</div><div class="meta">confirmada</div><div class="bar"><i style="width:78%"></i></div></div>
+            <div class="card"><div class="name">Cita viernes 15:00</div><div class="meta">pendiente</div><div class="bar"><i style="width:70%"></i></div></div>
+          </div>
+          <div class="col">
+            <div class="col-head">Cerrar <b>4</b></div>
+            <div class="card hot"><div class="name">Propuesta enviada</div><div class="meta">revisando</div><div class="bar"><i style="width:90%"></i></div></div>
+            <div class="card"><div class="name">Firmando hoy</div><div class="meta">contrato</div><div class="bar"><i style="width:96%"></i></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="floating-chip" aria-hidden="true">
+        <span class="pulse"></span>
+        <span>IA calificando ahora · 3 prospectos</span>
+      </div>
+
+      <div class="floating-ping" aria-hidden="true">
+        <div class="ico">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4L3 11l7 2 2 7 8-16z"/></svg>
+        </div>
+        <div>
+          <div class="t">Cita agendada</div>
+          <div class="s">jue · 10:00 am</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Proof bar -->
+  <div class="container proof reveal">
+    <div class="proof-label">Empresas que ya venden con sistema</div>
+    <div class="proof-row">
+      <div class="proof-logo"><span class="mk" style="color:#C94F78"></span>Solaria<span>+</span></div>
+      <div class="proof-logo" style="font-style:italic">Andina<b style="font-weight:700">Capital</b></div>
+      <div class="proof-logo">CONSTRU<span>.co</span></div>
+      <div class="proof-logo"><span class="mk"></span>Vita Clínica</div>
+      <div class="proof-logo" style="letter-spacing:0"><b style="font-weight:800">nexo</b>/ed</div>
+      <div class="proof-logo">◇ novaTech</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PROBLEM ============ -->
+<section class="problem" id="problema">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">El problema</div>
+      <h2 class="reveal d1">Tu equipo comercial no tiene un problema de esfuerzo.<br>Tiene un problema de sistema.</h2>
+      <p class="reveal d2">Cuando cada venta depende de memoria, hojas de cálculo y buena voluntad, el crecimiento se detiene exactamente donde empieza el caos.</p>
+    </div>
+
+    <div class="pain-grid">
+      <div class="pain reveal d1">
+        <div class="num">DOLOR · 01</div>
+        <div class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 3 6-8"/><circle cx="21" cy="5" r="1.5"/></svg>
+        </div>
+        <h3>Leads que nunca vuelven</h3>
+        <p>Entran por todas partes — anuncios, referidos, redes — y se pierden antes de llegar a una conversación real. Pagas tráfico que se evapora.</p>
+      </div>
+      <div class="pain reveal d2">
+        <div class="num">DOLOR · 02</div>
+        <div class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <h3>Seguimiento que depende de que alguien se acuerde</h3>
+        <p>Si el vendedor olvida, el cliente olvida. Los cierres dejan de ser previsibles y el mes se juega en los últimos tres días.</p>
+      </div>
+      <div class="pain reveal d3">
+        <div class="num">DOLOR · 03</div>
+        <div class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="19" cy="18" r="2.5"/></svg>
+        </div>
+        <h3>Vendes más, pero no sabes por qué</h3>
+        <p>Sin datos conectados, no sabes qué canal funciona, qué mensaje convierte ni dónde se rompe el embudo. Todo es intuición, nada es palanca.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="how" id="como-funciona">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Cómo funciona</div>
+      <h2 class="reveal d1">Cuatro piezas, un solo sistema.<br>Conectado desde el primer día.</h2>
+      <p class="reveal d2">Del primer click al contrato firmado, todo sucede en un mismo flujo. Sin herramientas sueltas, sin equipos duplicando trabajo.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal d1">
+        <div class="num">Captar</div>
+        <h3>Todas las puertas de entrada, una sola bandeja</h3>
+        <p>Anuncios, formularios, WhatsApp, referidos. Cada lead entra con su fuente, su contexto y un timestamp — listo para trabajarse.</p>
+        <div class="viz"><i style="height:40%"></i><i style="height:65%"></i><i style="height:55%"></i><i style="height:85%"></i><i style="height:70%"></i><i style="height:95%"></i></div>
+      </div>
+      <div class="step reveal d2">
+        <div class="num">Calificar</div>
+        <h3>La IA separa a los que compran de los que curiosean</h3>
+        <p>Un bot conversa en segundos, detecta intención, presupuesto y timing. Tu equipo sólo recibe conversaciones que valen la pena.</p>
+        <div class="viz"><i style="height:30%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:95%"></i><i style="height:60%"></i><i style="height:40%"></i></div>
+      </div>
+      <div class="step reveal d3">
+        <div class="num">Agendar</div>
+        <h3>La cita se pone sola en la agenda correcta</h3>
+        <p>El prospecto calificado agenda con el vendedor indicado, respetando horarios y zona. Cero ida y vuelta, cero citas perdidas.</p>
+        <div class="viz"><i style="height:65%"></i><i style="height:75%"></i><i style="height:85%"></i><i style="height:90%"></i><i style="height:92%"></i><i style="height:100%"></i></div>
+      </div>
+      <div class="step reveal d4">
+        <div class="num">Cerrar</div>
+        <h3>Cada etapa empuja al siguiente sí</h3>
+        <p>Propuestas, recordatorios, contratos y cobros con disparadores automáticos. El cierre deja de ser un milagro y empieza a ser un proceso.</p>
+        <div class="viz"><i style="height:80%"></i><i style="height:85%"></i><i style="height:90%"></i><i style="height:95%"></i><i style="height:98%"></i><i style="height:100%"></i></div>
+      </div>
+    </div>
+
+    <div class="flow-line">
+      <div class="arrow">Entran</div>
+      <div class="arrow">Se filtran</div>
+      <div class="arrow">Se agendan</div>
+      <div class="arrow">Se cierran</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INCLUDED ============ -->
+<section id="incluye" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Qué incluye</div>
+      <h2 class="reveal d1">Seis entregables concretos.<br>Un sistema entero, funcionando.</h2>
+      <p class="reveal d2">No te entregamos licencias ni manuales. Te entregamos tu sistema comercial armado, probado y medido.</p>
+    </div>
+
+    <div class="inc-grid">
+      <div class="inc reveal d1">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </div>
+        <span class="tag">01 · Captación</span>
+        <h3>Formularios y landings que convierten</h3>
+        <p>Puntos de entrada conectados a tu sistema, con medición por canal y por campaña desde el minuto cero.</p>
+      </div>
+      <div class="inc reveal d2">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <span class="tag">02 · Conversación</span>
+        <h3>Bot de IA que califica y agenda</h3>
+        <p>Un asistente que responde en segundos, entiende el contexto y entrega al vendedor sólo lo que está listo.</p>
+      </div>
+      <div class="inc reveal d3">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </div>
+        <span class="tag">03 · Agenda</span>
+        <h3>Ruteo y calendario inteligente</h3>
+        <p>Cada cita cae en el calendario del vendedor correcto, con recordatorios automáticos antes y después.</p>
+      </div>
+      <div class="inc reveal d1">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 4v16M16 4v16M4 10h16M4 16h16"/></svg>
+        </div>
+        <span class="tag">04 · Pipeline</span>
+        <h3>Tablero de oportunidades en vivo</h3>
+        <p>Todas tus oportunidades por etapa, con alertas cuando algo se estanca. Tu equipo ve qué empujar hoy.</p>
+      </div>
+      <div class="inc reveal d2">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2l-2 4v14a2 2 0 002 2h12a2 2 0 002-2V6l-2-4H6z"/><path d="M4 6h16M10 10a2 2 0 104 0"/></svg>
+        </div>
+        <span class="tag">05 · Cierre</span>
+        <h3>Propuestas, contratos y firmas</h3>
+        <p>Plantillas listas, envíos automáticos y firma digital. El cierre deja de trabarse en operaciones.</p>
+      </div>
+      <div class="inc reveal d3">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
+        </div>
+        <span class="tag">06 · Medición</span>
+        <h3>Tablero ejecutivo con los números que importan</h3>
+        <p>Conversión por canal, tiempo a cierre, ticket promedio. Saber dónde estás ganando — y dónde perdiendo plata.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTORS ============ -->
+<section class="sectors" id="sectores">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Para quién es</div>
+      <h2 class="reveal d1">Hecho para empresas que venden<br>con equipo, no con suerte.</h2>
+      <p class="reveal d2">Trabajamos con compañías en crecimiento en LATAM donde una conversación mal gestionada cuesta decenas o miles de dólares. Así se ve nuestro ICP:</p>
+    </div>
+
+    <div class="sector-grid">
+      <div class="sector reveal d1">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+        <div><div class="t">Energía solar</div><div class="s">Residencial · Comercial</div></div>
+      </div>
+      <div class="sector reveal d2">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div>
+        <div><div class="t">Financiero</div><div class="s">Crédito · Seguros · Wealth</div></div>
+      </div>
+      <div class="sector reveal d3">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-8h6v8"/></svg></div>
+        <div><div class="t">Construcción</div><div class="s">Inmobiliario · Desarrollos</div></div>
+      </div>
+      <div class="sector reveal d1">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 000-7.6z"/></svg></div>
+        <div><div class="t">Salud</div><div class="s">Clínicas · Estética · Dental</div></div>
+      </div>
+      <div class="sector reveal d2">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div>
+        <div><div class="t">Tecnología</div><div class="s">SaaS · Servicios · B2B</div></div>
+      </div>
+      <div class="sector reveal d3">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5a6 3 0 0012 0v-5"/></svg></div>
+        <div><div class="t">Educación</div><div class="s">Posgrado · Ejecutiva · Online</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="nosotros">
+  <div class="container about-grid">
+    <div>
+      <div class="eyebrow reveal">Nosotros</div>
+      <h2 class="reveal d1">Nos obsesiona el momento<br>en que una empresa aprende<br>a <span style="color:var(--pink)">ganar en serie</span>.</h2>
+      <p class="lede reveal d2">
+        Dopima nació para una idea sencilla: vender debería dar dopamina, no ansiedad.
+      </p>
+      <p class="body reveal d3">
+        Cuando el sistema funciona, cada cierre empuja al siguiente. El equipo ve el tablero moverse,
+        los números subir, las citas llenarse — y eso se vuelve adictivo en el mejor sentido.
+        Construimos la infraestructura comercial para que eso sea lo normal, no la excepción.
+      </p>
+      <div class="about-stats reveal d3">
+        <div class="s"><div class="n">100%</div><div class="l">implementado con tu equipo</div></div>
+        <div class="s"><div class="n">21</div><div class="l">días promedio al primer cierre</div></div>
+        <div class="s"><div class="n">6</div><div class="l">sectores con playbook propio</div></div>
+      </div>
+    </div>
+
+    <aside class="pitch reveal d2">
+      <span class="corner">Pitch · 30s</span>
+      <div class="stopwatch">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg>
+        00:30 · léelo en voz alta
+      </div>
+      <p>"Dopima no te vende un software ni un curso."</p>
+      <p>"Te entregamos un sistema comercial funcionando: captación, seguimiento, agendamiento y cierre — todo conectado, todo medido, todo en marcha desde el primer día."</p>
+      <p>"Tú pones el negocio. Nosotros ponemos la máquina."</p>
+      <div class="sig">
+        <span class="dp"></span>
+        <span>— Equipo Dopima, Bogotá · Ciudad de México · Santiago</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta" id="wa">
+  <div class="container">
+    <div class="eyebrow reveal">Listo para empezar</div>
+    <h2 class="reveal d1">Si vender bien se volviera <em>un hábito</em>,<br>¿qué dejarías de posponer?</h2>
+    <p class="sub reveal d2">Empieza por una conversación. En pocos minutos sabrás si Dopima encaja con tu operación — y nosotros si podemos mover tus números.</p>
+
+    <div class="cta-row reveal d3">
+      <a href="https://wa.link/sw90lb" target="_blank" rel="noopener" class="btn btn-primary btn-xl" data-wa>
+        <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.42 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/></svg>
+        Quiero mi sistema comercial
+      </a>
+      <a href="#como-funciona" class="btn btn-outline btn-xl">Ver cómo funciona</a>
+    </div>
+    <div class="mini reveal d4">Respuesta en minutos · sin costo · sin compromiso</div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="logo-wordmark on-dark">dopima</div>
+        <p class="foot-tagline">Infraestructura comercial para empresas que están cansadas de vender a pulso.</p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#como-funciona">Cómo funciona</a></li>
+          <li><a href="#incluye">Qué incluye</a></li>
+          <li><a href="#sectores">Para quién</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Empezar</h4>
+        <ul>
+          <li><a href="https://wa.link/sw90lb" target="_blank" rel="noopener" data-wa>WhatsApp</a></li>
+          <li><a href="https://wa.link/sw90lb" target="_blank" rel="noopener" data-wa>Agenda una cita</a></li>
+          <li><a href="mailto:hola@dopima.co">hola@dopima.co</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="legal/terminos.html">Términos y condiciones</a></li>
+          <li><a href="legal/privacidad.html">Política de privacidad</a></li>
+          <li><a href="legal/cookies.html">Política de cookies</a></li>
+          <li><a href="legal/datos-personales.html">Tratamiento de datos personales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 DOPIMA · HECHO EN LATAM</span>
+      <div class="legal-links">
+        <a href="#">Bogotá</a>
+        <a href="#">CDMX</a>
+        <a href="#">Santiago</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp FAB -->
+<a href="https://wa.link/sw90lb" target="_blank" rel="noopener" class="fab-wa" data-wa aria-label="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.42 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/></svg>
+</a>
+
+<!-- Tweaks panel -->
+<div class="tweaks" id="tweaks">
+  <button class="tw-close" onclick="document.getElementById('tweaks').classList.remove('open')">×</button>
+  <h5>Tweaks</h5>
+  <div class="tw-sub">Ajusta en vivo · se guarda al archivo</div>
+
+  <div class="tw-row">
+    <label>Color principal</label>
+    <div class="tw-swatches" id="tw-color">
+      <span class="tw-swatch active" data-color="#C94F78" style="background:#C94F78"></span>
+      <span class="tw-swatch" data-color="#E8547F" style="background:#E8547F"></span>
+      <span class="tw-swatch" data-color="#A63D60" style="background:#A63D60"></span>
+      <span class="tw-swatch" data-color="#D95F7A" style="background:#D95F7A"></span>
+      <span class="tw-swatch" data-color="#8B3A60" style="background:#8B3A60"></span>
+    </div>
+  </div>
+
+  <div class="tw-row">
+    <label>Hero</label>
+    <div class="tw-opts" id="tw-hero">
+      <span class="tw-opt active" data-hero="cta">Solo CTA</span>
+      <span class="tw-opt" data-hero="form">CTA + Form</span>
+    </div>
+  </div>
+
+  <div class="tw-row">
+    <label>Sección de problema</label>
+    <div class="tw-opts" id="tw-problem">
+      <span class="tw-opt active" data-problem-theme="dark">Oscura</span>
+      <span class="tw-opt" data-problem-theme="light">Clara</span>
+    </div>
+  </div>
+
+  <div class="tw-row">
+    <label>Densidad</label>
+    <div class="tw-opts" id="tw-density">
+      <span class="tw-opt active" data-density="normal">Normal</span>
+      <span class="tw-opt" data-density="compact">Compacta</span>
+    </div>
+  </div>
+</div>
+
+<script>
+const TWEAKS_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "primaryColor": "#C94F78",
+  "hero": "cta",
+  "problemTheme": "dark",
+  "density": "normal"
+}/*EDITMODE-END*/;
+
+// ------ Nav scrolled state ------
+const nav = document.getElementById('nav');
+const onScroll = () => {
+  nav.classList.toggle('scrolled', window.scrollY > 8);
+};
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+// ------ Reveal on scroll ------
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+},{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// ------ WhatsApp handler (prototype) ------
+document.querySelectorAll('[data-wa]').forEach(el=>{
+  el.addEventListener('click',(e)=>{
+    // In a real deployment, this would open wa.me/... — here we scroll to final CTA.
+    const target = document.getElementById('wa');
+    if(target && el.getAttribute('href')==='#wa'){
+      // default scroll behavior
+    }
+  });
+});
+
+// ==========================================
+// Tweaks / Edit mode
+// ==========================================
+const body = document.body;
+
+function applyTweaks(t){
+  if(t.primaryColor){
+    document.documentElement.style.setProperty('--pink', t.primaryColor);
+    // Derive lighter shades from the hue (approximate via opacity mix layered on var())
+    // We'll just override the swatch highlight visually
+    const darker = darken(t.primaryColor, 0.12);
+    document.documentElement.style.setProperty('--pink-600', darker);
+    // sync active swatch
+    document.querySelectorAll('#tw-color .tw-swatch').forEach(s=>{
+      s.classList.toggle('active', s.dataset.color?.toLowerCase()===t.primaryColor.toLowerCase());
+    });
+  }
+  if(t.hero){ body.dataset.hero = t.hero; syncOpts('tw-hero','hero',t.hero); }
+  if(t.problemTheme){ body.dataset.problemTheme = t.problemTheme; syncOpts('tw-problem','problem-theme',t.problemTheme); }
+  if(t.density){ body.dataset.density = t.density; syncOpts('tw-density','density',t.density); }
+}
+function syncOpts(containerId, dataKey, value){
+  document.querySelectorAll('#'+containerId+' .tw-opt').forEach(o=>{
+    o.classList.toggle('active', o.dataset[toCamel(dataKey)]===value);
+  });
+}
+function toCamel(s){return s.replace(/-([a-z])/g,(_,c)=>c.toUpperCase())}
+function darken(hex, amt){
+  const h = hex.replace('#',''); const n = parseInt(h,16);
+  let r = (n>>16)&255, g=(n>>8)&255, b=n&255;
+  r=Math.max(0,Math.round(r*(1-amt))); g=Math.max(0,Math.round(g*(1-amt))); b=Math.max(0,Math.round(b*(1-amt)));
+  return '#'+[r,g,b].map(v=>v.toString(16).padStart(2,'0')).join('');
+}
+
+// wire up controls
+document.querySelectorAll('#tw-color .tw-swatch').forEach(sw=>{
+  sw.addEventListener('click',()=>{
+    const c = sw.dataset.color;
+    applyTweaks({primaryColor: c});
+    post({primaryColor: c});
+  });
+});
+['tw-hero','tw-problem','tw-density'].forEach(id=>{
+  document.querySelectorAll('#'+id+' .tw-opt').forEach(opt=>{
+    opt.addEventListener('click',()=>{
+      const k = id==='tw-hero'?'hero':id==='tw-problem'?'problemTheme':'density';
+      const v = opt.dataset[toCamel(id==='tw-hero'?'hero':id==='tw-problem'?'problem-theme':'density')];
+      applyTweaks({[k]: v});
+      post({[k]: v});
+    });
+  });
+});
+function post(edits){
+  try{ window.parent.postMessage({type:'__edit_mode_set_keys', edits}, '*'); }catch(e){}
+}
+
+// Edit mode host protocol
+window.addEventListener('message',(e)=>{
+  const d = e.data||{};
+  if(d.type==='__activate_edit_mode'){ document.getElementById('tweaks').classList.add('open'); }
+  else if(d.type==='__deactivate_edit_mode'){ document.getElementById('tweaks').classList.remove('open'); }
+});
+try{ window.parent.postMessage({type:'__edit_mode_available'},'*'); }catch(e){}
+
+// Apply initial tweaks
+applyTweaks(TWEAKS_DEFAULTS);
+</script>
+
+</body>
+</html>
