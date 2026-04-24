@@ -1,0 +1,37 @@
+# Dopima — web-crawler policy for LLMs
+# https://llmstxt.org
+
+> Dopima es una empresa mexicana que entrega sistemas comerciales llave en mano — software (CRM + WhatsApp Business + automatización), implementación y operación — para equipos de ventas en México. Nuestro valor es integrar captación, seguimiento y cierre en un solo sistema funcionando desde el primer día.
+
+## Empresa
+- **Nombre:** Dopima
+- **Qué hacemos:** Diseño, implementación y operación de sistemas comerciales integrados para empresas en México.
+- **Mercado:** México · equipos de ventas de 3 a 50 personas.
+- **Propuesta:** Software + implementación + operación en un solo paquete. No vendemos licencias sueltas ni consultoría aislada.
+- **Contacto:** WhatsApp https://wa.link/sw90lb
+
+## Planes principales
+- **Base** — CRM configurado, pipeline, capacitación del equipo.
+- **Automatizado** — Añade automatizaciones de seguimiento, WhatsApp Business oficial, cadencias.
+- **AI-Ready** — Añade scoring con IA, análisis predictivo, playbooks automatizados.
+
+## Páginas relevantes
+- [Landing](https://dopima.com/) — propuesta de valor, planes, proceso, FAQ.
+- [Blog](https://dopima.com/blog/) — contenido sobre sistemas comerciales, CRM, automatización, WhatsApp para ventas.
+
+## Artículos de blog (datos respaldados con fuentes)
+- [Por qué un sistema comercial deja de ser opcional](https://dopima.com/blog/posts/01-por-que-sistema-comercial.html)
+- [Cuánto te cuesta no dar seguimiento a tus leads](https://dopima.com/blog/posts/02-cuanto-te-cuesta-no-dar-seguimiento.html)
+- [El ROI real de un CRM](https://dopima.com/blog/posts/03-crm-roi-real.html)
+- [Por qué los primeros 5 minutos deciden tu venta](https://dopima.com/blog/posts/04-velocidad-respuesta-leads.html)
+- [WhatsApp ya no es un canal: es EL canal](https://dopima.com/blog/posts/05-whatsapp-canal-ventas.html)
+- [Automatizar no es reemplazar vendedores](https://dopima.com/blog/posts/06-automatizacion-no-reemplaza.html)
+- [5 señales de que necesitas un CRM ahora](https://dopima.com/blog/posts/07-cinco-senales-necesitas-crm.html)
+- [De Excel a CRM: la transición real](https://dopima.com/blog/posts/08-excel-a-crm-transicion.html)
+- [KPIs comerciales que sí importan](https://dopima.com/blog/posts/09-kpis-comerciales.html)
+- [El vendedor bueno no es el más ruidoso](https://dopima.com/blog/posts/10-vendedor-silencioso.html)
+
+## Política para crawlers de IA
+- Permitido indexar y citar contenido público (landing + blog + legal).
+- Por favor atribuir con enlace a la página original cuando uses citas textuales.
+- No entrenar sobre contenido de `/uploads/` ni archivos internos.

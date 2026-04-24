@@ -3,9 +3,84 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Dopima — Tu sistema comercial llave en mano</title>
-<meta name="description" content="Dopima entrega un sistema comercial llave en mano: software, implementación y operación. Captación, seguimiento y cierre funcionando desde el primer día. México." />
+<title>Dopima — Sistema comercial llave en mano · CRM + WhatsApp + Operación · México</title>
+<meta name="description" content="Dopima entrega un sistema comercial llave en mano: CRM, automatización WhatsApp Business e implementación. Captación, seguimiento y cierre funcionando desde el primer día. México." />
+<meta name="keywords" content="CRM México, sistema comercial, automatización ventas, WhatsApp Business México, implementación CRM, operación comercial, pipeline ventas, Dopima" />
+<meta name="author" content="Dopima" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<meta name="googlebot" content="index, follow" />
+<meta name="bingbot" content="index, follow" />
+<link rel="canonical" href="https://dopima.com/" />
+<meta http-equiv="Content-Language" content="es-MX" />
+<meta name="geo.region" content="MX" />
+<meta name="geo.placename" content="México" />
+<meta name="theme-color" content="#F54E7A" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Dopima" />
+<meta property="og:locale" content="es_MX" />
+<meta property="og:url" content="https://dopima.com/" />
+<meta property="og:title" content="Dopima — Sistema comercial llave en mano" />
+<meta property="og:description" content="CRM, automatización y WhatsApp Business integrados. Software + implementación + operación en un solo paquete. México." />
+<meta property="og:image" content="https://dopima.com/assets/dopima-og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Dopima — Sistema comercial llave en mano" />
+<meta name="twitter:description" content="CRM, automatización y WhatsApp Business integrados. Implementación y operación incluidas. México." />
+<meta name="twitter:image" content="https://dopima.com/assets/dopima-og.png" />
+
+<!-- AI / LLM discovery -->
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly index" />
+
 <link rel="icon" type="image/png" href="assets/dopima-icon.png" />
+<link rel="apple-touch-icon" href="assets/dopima-icon.png" />
+
+<!-- Schema.org: Organization + WebSite + Service -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://dopima.com/#organization",
+      "name": "Dopima",
+      "url": "https://dopima.com/",
+      "logo": "https://dopima.com/assets/dopima-logo-pink.png",
+      "description": "Dopima entrega sistemas comerciales llave en mano: software, implementación y operación integrada de CRM, WhatsApp Business y automatización de ventas.",
+      "address": {"@type":"PostalAddress","addressCountry":"MX","addressLocality":"Ciudad de México"},
+      "areaServed": {"@type":"Country","name":"México"},
+      "contactPoint": {"@type":"ContactPoint","contactType":"sales","availableLanguage":["Spanish"],"url":"https://wa.link/sw90lb"}
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://dopima.com/#website",
+      "url": "https://dopima.com/",
+      "name": "Dopima",
+      "inLanguage": "es-MX",
+      "publisher": {"@id":"https://dopima.com/#organization"}
+    },
+    {
+      "@type": "Service",
+      "name": "Sistema comercial llave en mano",
+      "serviceType": "Implementación y operación de CRM + WhatsApp Business + automatización de ventas",
+      "provider": {"@id":"https://dopima.com/#organization"},
+      "areaServed": {"@type":"Country","name":"México"},
+      "hasOfferCatalog": {
+        "@type":"OfferCatalog","name":"Planes Dopima",
+        "itemListElement":[
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Base"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Automatizado"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"AI-Ready"}}
+        ]
+      }
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -311,6 +386,7 @@ body[data-plans="2"] .plans-grid{grid-template-columns:1fr 1fr;max-width:720px;m
       <a href="#como-funciona">Cómo funciona</a>
       <a href="#planes">Planes</a>
       <a href="#proceso">Proceso</a>
+      <a href="blog/index.html">Blog</a>
       <a href="#faq">FAQ</a>
     </div>
     <a href="https://wa.link/sw90lb" target="_blank" rel="noopener" class="btn btn-wa nav-cta">
@@ -727,6 +803,7 @@ body[data-plans="2"] .plans-grid{grid-template-columns:1fr 1fr;max-width:720px;m
           <li><a href="#como-funciona">Cómo funciona</a></li>
           <li><a href="#planes">Planes</a></li>
           <li><a href="#proceso">Proceso</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
@@ -819,5 +896,6 @@ document.querySelectorAll('#tw-plans .tw-opt').forEach(x=>{
   x.classList.toggle('active', x.dataset.plans === (TWEAK_DEFAULTS.plansVisible||'3'));
 });
 </script>
+<script src="assets/protection.js"></script>
 </body>
 </html>
