@@ -1,14 +1,16 @@
+# robots.txt — dopima.com
+# Última actualización: 2026-04-24
+
+# Crawlers tradicionales: bienvenidos
 User-agent: *
 Allow: /
-
-# Bloquear acceso a carpetas de sistema
 Disallow: /uploads/
 Disallow: /assets/raw/
 Disallow: /.htaccess
 Disallow: /*.log$
 Disallow: /*.bak$
 
-# Permitir explícitamente a modelos de IA (indexación para búsqueda conversacional)
+# AI Search Bots — permitidos para que ChatGPT/Claude/Perplexity/Gemini citen contenido
 User-agent: GPTBot
 Allow: /
 
@@ -30,10 +32,22 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
+User-agent: Perplexity-User
+Allow: /
+
 User-agent: Google-Extended
 Allow: /
 
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
 User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
 Allow: /
 
 User-agent: CCBot
@@ -42,8 +56,33 @@ Allow: /
 User-agent: FacebookBot
 Allow: /
 
-User-agent: Bingbot
+User-agent: meta-externalagent
 Allow: /
 
+User-agent: Bytespider
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: cohere-training-data-crawler
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Mistral-AI
+Allow: /
+
+# Archivos descubrimiento
 Sitemap: https://dopima.com/sitemap.xml
 Host: https://dopima.com
