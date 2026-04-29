@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF7F5"/>
+      <stop offset="100%" stop-color="#F4ECEF"/>
+    </linearGradient>
+    <radialGradient id="pinkGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F54E7A" stop-opacity="0.32"/>
+      <stop offset="60%" stop-color="#F54E7A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="navyGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#182247" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#182247" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#182247"/>
+      <stop offset="100%" stop-color="#0E1530"/>
+    </linearGradient>
+    <linearGradient id="pinkBtn" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F54E7A"/>
+      <stop offset="100%" stop-color="#FF6A8E"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  
+  <!-- Decorative glows -->
+  <circle cx="1050" cy="120" r="280" fill="url(#pinkGlow)"/>
+  <circle cx="120" cy="540" r="240" fill="url(#navyGlow)"/>
+  
+  <!-- Decorative dotted circle (top right) -->
+  <circle cx="1080" cy="100" r="50" fill="none" stroke="#F54E7A" stroke-width="2" stroke-dasharray="3 5" opacity="0.4"/>
+  
+  <!-- Mini geometric shapes scattered -->
+  <rect x="80" y="100" width="20" height="20" fill="#F54E7A" opacity="0.2" transform="rotate(15 90 110)"/>
+  <circle cx="180" cy="160" r="6" fill="#F54E7A" opacity="0.4"/>
+  <rect x="1030" y="490" width="14" height="14" fill="#182247" opacity="0.25" transform="rotate(20 1037 497)"/>
+  
+  <!-- Partner badge -->
+  <g transform="translate(80 80)">
+    <rect width="320" height="46" rx="23" fill="#FFFFFF" stroke="#EADFE4" stroke-width="1"/>
+    <circle cx="26" cy="23" r="6" fill="#25D366"/>
+    <circle cx="26" cy="23" r="10" fill="#25D366" opacity="0.25"/>
+    <text x="48" y="29" font-family="DM Sans, sans-serif" font-size="14" font-weight="600" fill="#140B10">
+      Partner Oficial Clientify
+    </text>
+    <text x="240" y="29" font-family="JetBrains Mono, monospace" font-size="12" fill="#6E5C64" letter-spacing="0.5">
+      MX · LATAM
+    </text>
+  </g>
+  
+  <!-- Main headline -->
+  <text x="80" y="220" font-family="Bricolage Grotesque, sans-serif" font-size="56" font-weight="600" fill="#140B10" letter-spacing="-1.5">
+    El sistema
+  </text>
+  <text x="80" y="282" font-family="Bricolage Grotesque, sans-serif" font-size="56" font-weight="600" fill="#140B10" letter-spacing="-1.5">
+    comercial
+  </text>
+  <text x="80" y="344" font-family="Bricolage Grotesque, sans-serif" font-size="56" font-weight="600" fill="#140B10" letter-spacing="-1.5">
+    <tspan fill="#F54E7A" font-style="italic">llave en mano</tspan>.
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="80" y="395" font-family="DM Sans, sans-serif" font-size="20" fill="#3E2A33">
+    CRM + WhatsApp + IA, sobre Clientify.
+  </text>
+  <text x="80" y="425" font-family="DM Sans, sans-serif" font-size="20" fill="#3E2A33">
+    Una sola factura. Tu equipo vendiendo en 2-6 semanas.
+  </text>
+  
+  <!-- Pricing strip -->
+  <g transform="translate(80 460)">
+    <rect width="610" height="56" rx="12" fill="#FFFFFF" stroke="#EADFE4" stroke-width="1.5"/>
+    
+    <!-- Item 1: precio -->
+    <text x="20" y="24" font-family="JetBrains Mono, monospace" font-size="10" fill="#6E5C64" letter-spacing="2">DESDE</text>
+    <text x="20" y="46" font-family="Bricolage Grotesque, sans-serif" font-size="20" font-weight="600" fill="#140B10">$39 USD/mes</text>
+    
+    <!-- Divider -->
+    <line x1="180" y1="14" x2="180" y2="42" stroke="#EADFE4" stroke-width="1"/>
+    
+    <!-- Item 2: prueba -->
+    <text x="200" y="24" font-family="JetBrains Mono, monospace" font-size="10" fill="#6E5C64" letter-spacing="2">PRUEBA</text>
+    <text x="200" y="46" font-family="Bricolage Grotesque, sans-serif" font-size="20" font-weight="600" fill="#140B10">14 días gratis</text>
+    
+    <!-- Divider -->
+    <line x1="380" y1="14" x2="380" y2="42" stroke="#EADFE4" stroke-width="1"/>
+    
+    <!-- Item 3: implementación -->
+    <text x="400" y="24" font-family="JetBrains Mono, monospace" font-size="10" fill="#6E5C64" letter-spacing="2">IMPLEMENTACIÓN</text>
+    <text x="400" y="46" font-family="Bricolage Grotesque, sans-serif" font-size="20" font-weight="600" fill="#140B10">2-6 semanas</text>
+  </g>
+  
+  <!-- Tagline at bottom left -->
+  <text x="80" y="555" font-family="DM Sans, sans-serif" font-size="15" font-style="italic" fill="#6E5C64">
+    El sistema que hace que ganar se vuelva hábito.
+  </text>
+  
+  <!-- URL -->
+  <text x="80" y="582" font-family="JetBrains Mono, monospace" font-size="13" fill="#F54E7A" font-weight="500" letter-spacing="1.5">
+    DOPIMA.COM
+  </text>
+  
+  <!-- ===== Right side: CRM mockup card (reducido) ===== -->
+  <g transform="translate(800 160)">
+    <!-- Card shadow -->
+    <rect x="6" y="10" width="350" height="320" rx="18" fill="#182247" opacity="0.18"/>
+    <!-- Card body (navy) -->
+    <rect width="350" height="320" rx="18" fill="url(#cardGrad)"/>
+    
+    <!-- Card top bar -->
+    <rect x="0" y="0" width="350" height="32" rx="18" fill="rgba(255,255,255,0.05)"/>
+    <rect x="0" y="18" width="350" height="14" fill="rgba(255,255,255,0.05)"/>
+    <circle cx="18" cy="16" r="4.5" fill="#FF6058"/>
+    <circle cx="34" cy="16" r="4.5" fill="#FFBD2E"/>
+    <circle cx="50" cy="16" r="4.5" fill="#28C840"/>
+    <text x="180" y="20" font-family="JetBrains Mono, monospace" font-size="9" fill="#7E8AAB" text-anchor="middle">app.clientify.com/pipeline</text>
+    
+    <!-- Title -->
+    <text x="20" y="62" font-family="JetBrains Mono, monospace" font-size="9" fill="#FBA4BC" letter-spacing="2">PIPELINE · ABRIL</text>
+    <text x="20" y="86" font-family="Bricolage Grotesque, sans-serif" font-size="20" font-weight="600" fill="#FFFFFF">$847,500 MXN</text>
+    
+    <!-- Live pill -->
+    <g transform="translate(280 60)">
+      <rect x="-4" y="-12" width="48" height="20" rx="10" fill="#F54E7A"/>
+      <text x="20" y="2" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">LIVE</text>
+    </g>
+    
+    <!-- Pipeline columns -->
+    <g transform="translate(16 110)">
+      <!-- Col 1: Nuevo -->
+      <rect x="0" y="0" width="100" height="190" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+      <text x="10" y="18" font-family="JetBrains Mono, monospace" font-size="9" fill="#FBA4BC" letter-spacing="1.5">NUEVO · 12</text>
+      <rect x="6" y="28" width="88" height="32" rx="4" fill="rgba(255,255,255,0.85)"/>
+      <rect x="6" y="28" width="3" height="32" fill="#F54E7A"/>
+      <text x="14" y="42" font-family="DM Sans, sans-serif" font-size="9" font-weight="600" fill="#140B10">Constructora</text>
+      <text x="14" y="55" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#F54E7A">$48k</text>
+      
+      <rect x="6" y="68" width="88" height="32" rx="4" fill="rgba(255,255,255,0.85)"/>
+      <rect x="6" y="68" width="3" height="32" fill="#9CA8C8"/>
+      <text x="14" y="82" font-family="DM Sans, sans-serif" font-size="9" font-weight="600" fill="#140B10">Solar Pacífico</text>
+      <text x="14" y="95" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#F54E7A">$22k</text>
+      
+      <rect x="6" y="108" width="88" height="32" rx="4" fill="rgba(255,255,255,0.85)"/>
+      <rect x="6" y="108" width="3" height="32" fill="#34C77B"/>
+      <text x="14" y="122" font-family="DM Sans, sans-serif" font-size="9" font-weight="600" fill="#140B10">Inmobiliaria</text>
+      <text x="14" y="135" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#F54E7A">$95k</text>
+      
+      <!-- Col 2: Propuesta -->
+      <g transform="translate(108 0)">
+        <rect x="0" y="0" width="100" height="190" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <text x="10" y="18" font-family="JetBrains Mono, monospace" font-size="9" fill="#FBA4BC" letter-spacing="1.5">PROPUESTA · 5</text>
+        
+        <rect x="6" y="28" width="88" height="32" rx="4" fill="rgba(255,255,255,0.85)"/>
+        <rect x="6" y="28" width="3" height="32" fill="#F5C24C"/>
+        <text x="14" y="42" font-family="DM Sans, sans-serif" font-size="9" font-weight="600" fill="#140B10">Consultoría B2B</text>
+        <text x="14" y="55" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#F54E7A">$120k</text>
+        
+        <rect x="6" y="68" width="88" height="32" rx="4" fill="rgba(255,255,255,0.85)"/>
+        <rect x="6" y="68" width="3" height="32" fill="#F54E7A"/>
+        <text x="14" y="82" font-family="DM Sans, sans-serif" font-size="9" font-weight="600" fill="#140B10">Tech Startup</text>
+        <text x="14" y="95" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#F54E7A">$54k</text>
+      </g>
+      
+      <!-- Col 3: Cerrado -->
+      <g transform="translate(216 0)">
+        <rect x="0" y="0" width="100" height="190" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <text x="10" y="18" font-family="JetBrains Mono, monospace" font-size="9" fill="#FBA4BC" letter-spacing="1.5">CERRADO · 3</text>
+        
+        <rect x="6" y="28" width="88" height="32" rx="4" fill="rgba(255,255,255,0.85)"/>
+        <rect x="6" y="28" width="3" height="32" fill="#34C77B"/>
+        <text x="14" y="42" font-family="DM Sans, sans-serif" font-size="9" font-weight="600" fill="#140B10">Distribuidora</text>
+        <text x="14" y="55" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#F54E7A">$78k</text>
+        
+        <rect x="6" y="68" width="88" height="32" rx="4" fill="rgba(255,255,255,0.85)"/>
+        <rect x="6" y="68" width="3" height="32" fill="#34C77B"/>
+        <text x="14" y="82" font-family="DM Sans, sans-serif" font-size="9" font-weight="600" fill="#140B10">Logística MX</text>
+        <text x="14" y="95" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#F54E7A">$67k</text>
+      </g>
+    </g>
+  </g>
+</svg>
