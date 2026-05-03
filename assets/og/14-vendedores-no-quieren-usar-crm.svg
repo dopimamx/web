@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF7F5"/>
+      <stop offset="100%" stop-color="#F4ECEF"/>
+    </linearGradient>
+    <radialGradient id="pinkGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F54E7A" stop-opacity="0.32"/>
+      <stop offset="60%" stop-color="#F54E7A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <circle cx="1050" cy="120" r="280" fill="url(#pinkGlow)"/>
+  <circle cx="120" cy="540" r="240" fill="url(#pinkGlow)" opacity="0.6"/>
+  
+  <!-- Decorative dotted circle -->
+  <circle cx="1080" cy="100" r="50" fill="none" stroke="#F54E7A" stroke-width="2" stroke-dasharray="3 5" opacity="0.4"/>
+  
+  <!-- Category tag -->
+  <g transform="translate(80 80)">
+    <rect width="180" height="40" rx="20" fill="#F54E7A"/>
+    <text x="90" y="26" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">ADOPCIÓN</text>
+  </g>
+  
+  <!-- Brand -->
+  <g transform="translate(280 80)">
+    <circle cx="14" cy="20" r="6" fill="#25D366"/>
+    <text x="34" y="27" font-family="DM Sans, sans-serif" font-size="14" font-weight="600" fill="#140B10">Dopima Blog</text>
+    <text x="135" y="27" font-family="JetBrains Mono, monospace" font-size="12" fill="#6E5C64">· Partner Oficial Clientify</text>
+  </g>
+  
+  <!-- Title (max 3 lines) -->
+    <text x="80" y="240" font-family="Bricolage Grotesque, sans-serif" font-size="50" font-weight="600" fill="#140B10" letter-spacing="-1.5">Por qué tu equipo de ventas no quiere</text>
+  <text x="80" y="300" font-family="Bricolage Grotesque, sans-serif" font-size="50" font-weight="600" fill="#140B10" letter-spacing="-1.5">usar el CRM (y cómo arreglarlo)</text>
+  
+  <!-- Bottom strip -->
+  <rect x="80" y="510" width="1040" height="1" fill="#EADFE4"/>
+  <text x="80" y="555" font-family="DM Sans, sans-serif" font-size="16" font-style="italic" fill="#6E5C64">El sistema que hace que ganar se vuelva hábito.</text>
+  <text x="80" y="582" font-family="JetBrains Mono, monospace" font-size="13" fill="#F54E7A" font-weight="500" letter-spacing="1.5">DOPIMA.COM/BLOG</text>
+</svg>

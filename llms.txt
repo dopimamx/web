@@ -115,6 +115,16 @@ Dopima es Partner Oficial Clientify para LATAM.
 - /industrias/agencias-viajes.html — sistemas para agencias de viajes
 - /industrias/opticas.html — sistemas para ópticas y cadenas
 - /blog/ — blog de contenidos sobre sistemas comerciales y CRM
+- /blog/posts/23-pago-mensual-vs-anual-licencia.html — Por qué pagar la licencia mensual te sale 40% más caro (y cuándo conviene igual)
+- /blog/posts/22-primer-mes-crm-nuevo.html — El primer mes con tu CRM nuevo: qué medir cada semana para saber si está funcionando
+- /blog/posts/21-errores-caros-elegir-primer-crm-latam.html — 3 errores caros al elegir tu primer CRM en LATAM (y el cuarto que nadie te cuenta)
+- /blog/posts/20-lead-scoring-simple-4-variables.html — Lead scoring para gente que odia los rankings: el modelo simple de 4 variables
+- /blog/posts/19-ai-agent-vs-vendedor-humano.html — AI Agent vs vendedor humano: dónde sí, dónde no, dónde mata tu marca
+- /blog/posts/18-pipeline-se-cae-propuesta-enviada.html — El embudo que NO ves: por qué tu pipeline se cae en propuesta enviada
+- /blog/posts/17-plantillas-whatsapp-aprobadas-meta.html — Cómo escribir plantillas de WhatsApp que Meta aprueba a la primera
+- /blog/posts/16-whatsapp-personal-business-api.html — WhatsApp personal vs WhatsApp Business vs API oficial: la guía del dueño
+- /blog/posts/15-calculadora-velocidad-respuesta.html — Calculadora honesta: cuánto te cuesta responder en 1 hora vs 5 minutos
+- /blog/posts/14-vendedores-no-quieren-usar-crm.html — Por qué tu equipo de ventas no quiere usar el CRM (y cómo arreglarlo)
 - /legal/terminos.html — términos y condiciones
 - /legal/privacidad.html — aviso de privacidad
 - /legal/cookies.html — política de cookies
